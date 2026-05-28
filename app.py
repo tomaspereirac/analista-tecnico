@@ -74,9 +74,18 @@ html, body, [class*="css"] {
 [data-testid="stStatusWidget"] { display: none !important; }
 header[data-testid="stHeader"] {
     background: transparent;
-    height: 0;
 }
 .stApp > header { background: transparent; }
+
+/* Asegurar que el botón para reabrir el sidebar siempre sea visible */
+[data-testid="stSidebarCollapsedControl"],
+button[data-testid="stSidebarCollapseButton"],
+button[data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999 !important;
+}
 
 /* — Block container — */
 .main .block-container {
@@ -460,14 +469,6 @@ ticker = st.sidebar.text_input(
     "Ticker", value="AAPL", label_visibility="collapsed",
     placeholder="AAPL · BTC-USD · YPF · ^GSPC",
 ).strip().upper()
-
-with st.sidebar.expander("Tickers populares"):
-    st.markdown("""
-**US** · AAPL, TSLA, NVDA, MSFT, GOOGL, META, AMZN
-**Cripto** · BTC-USD, ETH-USD, SOL-USD
-**ADRs Argentinos** · YPF, GGAL, PAM, BMA, TEO
-**Índices** · ^GSPC (S&P), ^IXIC (Nasdaq), ^DJI (Dow)
-""")
 
 st.sidebar.markdown("### Marco temporal")
 period_opts = {
