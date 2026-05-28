@@ -79,12 +79,19 @@ header[data-testid="stHeader"] {
 
 /* Asegurar que el botón para reabrir el sidebar siempre sea visible */
 [data-testid="stSidebarCollapsedControl"],
-button[data-testid="stSidebarCollapseButton"],
 button[data-testid="collapsedControl"] {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     z-index: 999 !important;
+}
+
+/* Bloquear el botón "<" que colapsa el sidebar — el sidebar queda siempre fijo */
+[data-testid="stSidebarCollapseButton"],
+section[data-testid="stSidebar"] button[kind="header"],
+section[data-testid="stSidebar"] button[kind="headerNoPadding"],
+[data-testid="stSidebar"] [data-testid="baseButton-header"] {
+    display: none !important;
 }
 
 /* — Block container — */
